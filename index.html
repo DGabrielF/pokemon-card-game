@@ -17,17 +17,56 @@
   <div class="container">
     <div class="container-left">
       <div class="score-box">
-        <span>Você</span>
-        <span>Rival</span>
-        <span id="your-score">0</span>
-        <span id="enemy-score">0</span>
+        <div>
+          <span>Você</span>
+          <span id="your-score">0</span>
+        </div>
+        <div>
+          X
+        </div>
+        <div>
+          <span>Rival</span>
+          <span id="enemy-score">0</span>
+        </div>
       </div>
+      <div class="select-attribute">
+        <div>
+          <label for="height">Altura</label>
+          <input type="radio" id="height" name="opcao" value="height">
+        </div>
+        <div>
+          <label for="weight">Peso</label>
+          <input type="radio" id="weight" name="opcao" value="weight">
+        </div>
+        <div>
+          <label for="type">Tipo</label>
+          <input type="radio" id="type" name="opcao" value="type">
+        </div>
+        <div>
+          <label for="hp">Vida</label>
+          <input type="radio" id="hp" name="opcao" value="hp">         
+        </div>
+        <div>
+          <label for="speed">Rapidez</label>
+          <input type="radio" id="speed" name="opcao" value="speed">
+        </div>
+        <div>
+          <label for="attack">Ataque</label>
+          <input type="radio" id="attack" name="opcao" value="attack">
+        </div>
+        <div>
+          <label for="defense">Defesa</label>
+          <input type="radio" id="defense" name="opcao" value="defense">
+        </div>
+        <button class="confirm-attribute">Confirmar</button>
+      </div>
+
       <div class="card-detail">
         <p id="card-name">Bulbassaur</p>
         <div class="card-detail-header">
           <div id="physical-attributes">
-            <span id="height">A:9</span>
-            <span id="weight">P:15</span>
+            <span class="height">A:9</span>
+            <span class="weight">P:15</span>
           </div>
           <div class="types">Tipos</div>
         </div>
@@ -40,7 +79,7 @@
               <path d="M217.36,133.36,128,224,38.64,133.36a50,50,0,0,1,70.72-70.72L128,80l18.64-17.36a50,50,0,1,1,70.72,70.72Z" opacity="0.2"></path>
               <path d="M223,57a58.07,58.07,0,0,0-81.92-.1L128,69.05,114.91,56.86A58,58,0,0,0,33,139l89.35,90.66a8,8,0,0,0,11.4,0L223,139a58,58,0,0,0,0-82Zm-11.35,70.76L128,212.6,44.3,127.68a42,42,0,0,1,59.4-59.4l.2.2,18.65,17.35a8,8,0,0,0,10.9,0L152.1,68.48l.2-.2a42,42,0,1,1,59.36,59.44Z" opacity="0.4"></path>
             </svg>
-            <span class="hp">hp</span>
+            <span class="hp">200</span>
           </div>
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" 
@@ -68,6 +107,7 @@
           </div>
         </div>
       </div>
+      <button class="confirm-pokemon">Confirmar</button>
     </div>
     <div class="container-right">
       <div class="enemy-cards">
@@ -78,10 +118,14 @@
         <div class="enemy-card"></div>
         <div class="enemy-card"></div>
       </div>
-      <div class="duel-box">
-        <div class="your-poke"></div>
+      <div class="duel-box" style="flex-wrap: nowrap">
+        <div class="your-poke-card">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-dotted" viewBox="0 0 16 16">
+            <path d="M8 0c-.176 0-.35.006-.523.017l.064.998a7.117 7.117 0 0 1 .918 0l.064-.998A8.113 8.113 0 0 0 8 0M6.44.152c-.346.069-.684.16-1.012.27l.321.948c.287-.098.582-.177.884-.237L6.44.153zm4.132.271a7.946 7.946 0 0 0-1.011-.27l-.194.98c.302.06.597.14.884.237l.321-.947zm1.873.925a8 8 0 0 0-.906-.524l-.443.896c.275.136.54.29.793.459l.556-.831zM4.46.824c-.314.155-.616.33-.905.524l.556.83a7.07 7.07 0 0 1 .793-.458zM2.725 1.985c-.262.23-.51.478-.74.74l.752.66c.202-.23.418-.446.648-.648l-.66-.752zm11.29.74a8.058 8.058 0 0 0-.74-.74l-.66.752c.23.202.447.418.648.648l.752-.66m1.161 1.735a7.98 7.98 0 0 0-.524-.905l-.83.556c.169.253.322.518.458.793l.896-.443zM1.348 3.555c-.194.289-.37.591-.524.906l.896.443c.136-.275.29-.54.459-.793l-.831-.556zM.423 5.428a7.945 7.945 0 0 0-.27 1.011l.98.194c.06-.302.14-.597.237-.884l-.947-.321zM15.848 6.44a7.943 7.943 0 0 0-.27-1.012l-.948.321c.098.287.177.582.237.884l.98-.194zM.017 7.477a8.113 8.113 0 0 0 0 1.046l.998-.064a7.117 7.117 0 0 1 0-.918l-.998-.064zM16 8a8.1 8.1 0 0 0-.017-.523l-.998.064a7.11 7.11 0 0 1 0 .918l.998.064A8.1 8.1 0 0 0 16 8M.152 9.56c.069.346.16.684.27 1.012l.948-.321a6.944 6.944 0 0 1-.237-.884l-.98.194zm15.425 1.012c.112-.328.202-.666.27-1.011l-.98-.194c-.06.302-.14.597-.237.884l.947.321zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a6.999 6.999 0 0 1-.458-.793l-.896.443zm13.828.905c.194-.289.37-.591.524-.906l-.896-.443c-.136.275-.29.54-.459.793l.831.556zm-12.667.83c.23.262.478.51.74.74l.66-.752a7.047 7.047 0 0 1-.648-.648l-.752.66zm11.29.74c.262-.23.51-.478.74-.74l-.752-.66c-.201.23-.418.447-.648.648l.66.752m-1.735 1.161c.314-.155.616-.33.905-.524l-.556-.83a7.07 7.07 0 0 1-.793.458l.443.896zm-7.985-.524c.289.194.591.37.906.524l.443-.896a6.998 6.998 0 0 1-.793-.459l-.556.831zm1.873.925c.328.112.666.202 1.011.27l.194-.98a6.953 6.953 0 0 1-.884-.237l-.321.947zm4.132.271a7.944 7.944 0 0 0 1.012-.27l-.321-.948a6.954 6.954 0 0 1-.884.237l.194.98zm-2.083.135a8.1 8.1 0 0 0 1.046 0l-.064-.998a7.11 7.11 0 0 1-.918 0l-.064.998zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+          </svg>
+        </div>
         <div class="attribute-selected"></div>
-        <div class="enemy-poke"></div>
+        <div class="enemy-poke-card"></div>
       </div>
       <div class="your-cards">
         <div class="your-card"></div>
