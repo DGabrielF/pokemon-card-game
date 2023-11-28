@@ -1,0 +1,36 @@
+.grass {
+  background: rgb(2,156,80);
+  background: linear-gradient(90deg, rgba(2,156,80,1) 1%, rgba(35,195,56,1) 25%, rgba(2,156,80,1) 50%, rgba(35,195,56,1) 75%, rgba(2,156,80,1) 100%);
+}
+.normal {}
+.fire {
+  background: rgb(255,2,34);
+  background: linear-gradient(90deg, rgba(255,2,34,1) 1%, rgba(240,224,106,1) 25%, rgba(255,2,34,1) 50%, rgba(240,224,106,1) 75%, rgba(255,2,34,1) 100%);}
+.water {
+  background: rgb(2,95,156);
+  background: linear-gradient(90deg, rgba(2,95,156,1) 1%, rgba(36,91,218,1) 25%, rgba(2,95,156,1) 50%, rgba(36,91,218,1) 75%, rgba(2,95,156,1) 100%);
+}
+.flying {}
+.fighting {}
+.poison {
+  background: rgb(122,13,175);
+  background: linear-gradient(90deg, rgba(122,13,175,1) 1%, rgba(171,38,251,1) 25%, rgba(122,13,175,1) 50%, rgba(171,38,251,1) 75%, rgba(122,13,175,1) 100%);
+}
+.electric {
+  background: rgb(255,251,10);
+  background: linear-gradient(90deg, rgba(255,251,10,1) 1%, rgba(117,94,78,1) 25%, rgba(243,241,112,1) 50%, rgba(117,94,78,1) 75%, rgba(255,251,10,1) 100%);}
+.ground {}
+.rock {}
+.psychc {}
+.ice {
+  background: rgb(171,238,245);
+  background: linear-gradient(90deg, rgba(171,238,245,1) 1%, rgba(238,248,249,1) 25%, rgba(171,238,245,1) 50%, rgba(238,248,249,1) 75%, rgba(171,238,245,1) 100%);
+}
+.bug {
+  background: rgb(91,107,89);
+  background: linear-gradient(90deg, rgba(91,107,89,1) 1%, rgba(117,94,78,1) 25%, rgba(91,107,89,1) 50%, rgba(117,94,78,1) 75%, rgba(91,107,89,1) 100%);}
+.ghost {}
+.steel {}
+.dragon {}
+.dark {}
+.fairy {}

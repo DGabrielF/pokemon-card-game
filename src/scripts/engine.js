@@ -50,7 +50,8 @@ function idCardsHandGenerator() {
   return idArray
 }
 async function cardInHandGenerator() {
-  const idArray = idCardsHandGenerator();
+  // const idArray = idCardsHandGenerator();
+  const idArray = [1,4,7,12,11,100];
   
   const cardInHandList = [];
 
@@ -87,6 +88,9 @@ async function init() {
     image.src = state.values.enemyPokemonList[i].image;
     image.alt = state.values.enemyPokemonList[i].name;
 
+    state.values.enemyPokemonList[i].types.forEach((type) => {
+      card.classList.add(type)
+    })
     card.appendChild(name);
     card.appendChild(image);
 
