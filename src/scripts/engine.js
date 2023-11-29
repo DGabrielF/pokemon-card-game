@@ -149,6 +149,7 @@ function enemyPokeInField() {
   const cards = Array.from(document.querySelectorAll(`.enemy-card`));
   const randeomId = Math.floor(Math.random()*cards.length);
   const card = cards[randeomId];
+  console.log(card.classList)
 
   state.view.fieldCard.enemy.innerHTML = card.innerHTML;
   state.view.fieldCard.enemy.classList = card.classList;
@@ -231,9 +232,11 @@ function comparison() {
     state.view.score.player.textContent = state.values.playerScore;
     const cards = Array.from(document.querySelectorAll(".enemy-cards .enemy-card"));
     const card = cards.find(card => card.key === state.values.enemyPokemonInField.name);
-    card.innerHTML = ""
-    card.classList = ["defeated-card"];
-    card.onclick = null;
+    if (card){
+      card.innerHTML = ""
+      card.classList = ["defeated-card"];
+      card.onclick = null;
+    }
   } else if (state.values.playerPokemonInField[state.values.attributeSelected] < state.values.enemyPokemonInField[state.values.attributeSelected]) {
     state.values.enemyScore++;
     isEndGame = endGame();
@@ -241,9 +244,11 @@ function comparison() {
     state.view.score.enemy.textContent = state.values.enemyScore;    
     const cards = Array.from(document.querySelectorAll(".your-cards .your-card"));
     const card = cards.find(card => card.key === state.values.playerPokemonInField.name);
-    card.innerHTML = ""
-    card.classList = ["defeated-card"];
-    card.onclick = null;
+    if (card){
+      card.innerHTML = ""
+      card.classList = ["defeated-card"];
+      card.onclick = null;
+    }
   }
   console.log(isEndGame)
   if (!isEndGame) {
