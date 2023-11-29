@@ -1,36 +1,291 @@
-.grass {
-  background: rgb(2,156,80);
-  background: linear-gradient(90deg, rgba(2,156,80,1) 1%, rgba(35,195,56,1) 25%, rgba(2,156,80,1) 50%, rgba(35,195,56,1) 75%, rgba(2,156,80,1) 100%);
-}
-.normal {}
-.fire {
-  background: rgb(255,2,34);
-  background: linear-gradient(90deg, rgba(255,2,34,1) 1%, rgba(240,224,106,1) 25%, rgba(255,2,34,1) 50%, rgba(240,224,106,1) 75%, rgba(255,2,34,1) 100%);}
-.water {
-  background: rgb(2,95,156);
-  background: linear-gradient(90deg, rgba(2,95,156,1) 1%, rgba(36,91,218,1) 25%, rgba(2,95,156,1) 50%, rgba(36,91,218,1) 75%, rgba(2,95,156,1) 100%);
-}
-.flying {}
-.fighting {}
-.poison {
-  background: rgb(122,13,175);
-  background: linear-gradient(90deg, rgba(122,13,175,1) 1%, rgba(171,38,251,1) 25%, rgba(122,13,175,1) 50%, rgba(171,38,251,1) 75%, rgba(122,13,175,1) 100%);
-}
-.electric {
-  background: rgb(255,251,10);
-  background: linear-gradient(90deg, rgba(255,251,10,1) 1%, rgba(117,94,78,1) 25%, rgba(243,241,112,1) 50%, rgba(117,94,78,1) 75%, rgba(255,251,10,1) 100%);}
-.ground {}
-.rock {}
-.psychc {}
-.ice {
-  background: rgb(171,238,245);
-  background: linear-gradient(90deg, rgba(171,238,245,1) 1%, rgba(238,248,249,1) 25%, rgba(171,238,245,1) 50%, rgba(238,248,249,1) 75%, rgba(171,238,245,1) 100%);
-}
 .bug {
-  background: rgb(91,107,89);
-  background: linear-gradient(90deg, rgba(91,107,89,1) 1%, rgba(117,94,78,1) 25%, rgba(91,107,89,1) 50%, rgba(117,94,78,1) 75%, rgba(91,107,89,1) 100%);}
-.ghost {}
-.steel {}
-.dragon {}
-.dark {}
-.fairy {}
+  background: linear-gradient(90deg, #246d34, #4c5b4f, #4c5b4f, #246d34);
+}
+.bug p {
+  color: rgba(255,255,255,.995);
+  background: linear-gradient(#16371E, #16271E);
+}
+.bug #card-name,
+.bug .card-detail-header,
+.bug .card-detail-footer {
+  background: linear-gradient(#16371E, #16271E);
+}
+.bug img {
+  background: #fdcccc;
+  background: linear-gradient(#A1B4A6, #D7E8DB, #A1B4A6);
+}
+.dark {
+  background: linear-gradient(90deg, #202020, #707070, #707070, #202020);
+}
+.dark p {
+  color: rgba(255,255,255,.995);
+  background: linear-gradient(#101010, #050505);
+}
+.dark #card-name,
+.dark .card-detail-header,
+.dark .card-detail-footer {
+  background: linear-gradient(#101010, #050505);
+}
+.dark img {
+  background: #fdcccc;
+  background: linear-gradient(#eeeeee95, #eeeeee, #dddddd);
+}
+
+.dragon {background: linear-gradient(90deg, #fc9b00, #76e751, #76e751, #fc9b00);
+}
+.dragon p {
+  color: rgba(255,255,255,.995);
+  background: linear-gradient(#573601, #14300a);
+}
+.dragon #card-name,
+.dragon .card-detail-header,
+.dragon .card-detail-footer {
+  background: linear-gradient(#573601, #14300a);
+}
+.dragon img {
+  background: #fdcccc;
+  background: linear-gradient(#bcfba795, #bcfba7, #f9c673);
+}
+
+.electric {
+  background: linear-gradient(90deg, #fcca00, #fcfc00, #fcfc00, #fcca00);
+}
+.electric p {
+  color: rgba(255,255,255,.995);
+  background: linear-gradient(#636327, #33331d);
+}
+.electric #card-name,
+.electric .card-detail-header,
+.electric .card-detail-footer {
+  background: linear-gradient(#636327, #33331d);
+}
+.electric img {
+  background: #fdcccc;
+  background: linear-gradient(#f1fdab95, #f1fdab, #b4b3a1);
+}
+
+.fairy {
+  background: linear-gradient(90deg, #ffaee7, #fdceef, #fdceef, #ffaee7);
+}
+.fairy p {
+  color: rgba(255,255,255,.995);
+  background: linear-gradient(#a44b89, #6f2c5b);
+}
+.fairy #card-name,
+.fairy .card-detail-header,
+.fairy .card-detail-footer {
+  background: linear-gradient(#a26790, rgb(154, 81, 132));
+}
+.fairy img {
+  background: #fdcccc;
+  background: radial-gradient(#ffd7f395, #ffd7f3, #febaea);
+}
+.fighting {
+  background: linear-gradient(#fba168, #d9834d);
+}
+.fighting p {
+  color: rgba(255,255,255,.995);
+  background: linear-gradient(#b35c27, #984c1d);
+}
+.fighting #card-name,
+.fighting .card-detail-header,
+.fighting .card-detail-footer {
+  background: linear-gradient(#b35c27, #984c1d);
+}
+.fighting img {
+  background: #fdcccc;
+  background: linear-gradient(#f7c6a795, #f7c6a7, #9d806e);
+}
+.fire {
+  background: linear-gradient(90deg, #ff0222, #f0e06a, #f0e06a, #ff0222);
+}
+.fire p {
+  color: rgba(255,255,255,.995);
+  background: linear-gradient(#580d04, #480d04);
+}
+.fire #card-name,
+.fire .card-detail-header,
+.fire .card-detail-footer {
+  background: linear-gradient(#580d04, #480d04);
+}
+.fire img {
+  background: #fdcccc;
+  background: linear-gradient(#fdcccc95, #fdcccc, #ff7070);
+}
+.flying {
+  background: linear-gradient(45deg, #5DFFD3, #b8f8e7, #b8f8e7, #5DFFD3);
+}
+.flying p {
+  color: rgba(255,255,255,.995);
+  background: linear-gradient(#205c4c, #103f33);
+}
+.flying #card-name,
+.flying .card-detail-header,
+.flying .card-detail-footer {
+  background: linear-gradient(#205c4c, #103f33);
+}
+.flying img {
+  background: #fdcccc;
+  background: linear-gradient(#d8faf195, #d8faf1, rgb(122, 164, 153));
+}
+.ghost {
+  background: linear-gradient(45deg, #7b62a3, #674f8e, #554078, #453165);
+}
+.ghost p {
+  color: rgba(255,255,255,.995);
+  background: linear-gradient(#1d1230, #170b2e);
+}
+.ghost #card-name,
+.ghost .card-detail-header,
+.ghost .card-detail-footer {
+  background: linear-gradient(#1d1230, #170b2e);
+}
+.ghost img {
+  background: #fdcccc;
+  background: linear-gradient(#A6FCBA55, #b297dd, #9e74e3);
+}
+
+.grass {
+  background: linear-gradient(90deg, #017D1E, #00b52b, #00b52b, #017D1E);
+}
+.grass p {
+  color: rgba(255,255,255,.995);
+  background: linear-gradient(#24472C, #24472C);
+}
+.grass #card-name,
+.grass .card-detail-header,
+.grass .card-detail-footer {
+  background: linear-gradient(#24472C, #24472C);
+}
+.grass img {
+  background: #fdcccc;
+  background: linear-gradient(#A6FCBA95, #A6FCBA, #85CA95);
+}
+.ground {
+  background: linear-gradient(180deg, #9d8b46, #d1b853, #9d8b46, #574d26);
+}
+.ground #card-name,
+.ground p {
+  color: rgba(255,255,255,.995);
+  background: linear-gradient(#44441d, #33331d);
+}
+.ground .card-detail-header,
+.ground .card-detail-footer {
+  background: linear-gradient(#44441d, #33331d);
+}
+.ground img {
+  background: #fdcccc;
+  background: linear-gradient(#f1fdab95, #f1fdab, #b4b3a1);
+}
+.ice {
+  background: linear-gradient(90deg, #9ae8f6, #c9feff, #eff6f6, #c9feff, #9ae8f6);
+}
+.ice p {
+  color: rgba(255,255,255,.995);
+  background: linear-gradient(#29616b, #103238);
+}
+.ice #card-name,
+.ice .card-detail-header,
+.ice .card-detail-footer {
+  background: linear-gradient(#29616b, #103238);
+}
+.ice img {
+  background: #fdcccc;
+  background: linear-gradient(#ffffff95, #ffffff, #c7f7ff);
+}
+.normal {
+  background: linear-gradient(#aaaaaa, #ababab, #aaaaaa);
+}
+.normal p {
+  color: rgba(255,255,255,.995);
+  background: linear-gradient(#888888, #777777);
+}
+.normal #card-name,
+.normal .card-detail-header,
+.normal .card-detail-footer {
+  background: linear-gradient(#888888, #777777);
+}
+.normal img {
+  background: #fdcccc;
+  background: radial-gradient(#ededed95, #ededed, #dedede);
+}
+.poison {
+  background: linear-gradient(90deg, #633171, #b97fc9, #633171);
+}
+.poison p {
+  color: rgba(255,255,255,.995);
+  background: linear-gradient(#3d1b51, #1d0b28);
+}
+.poison #card-name,
+.poison .card-detail-header,
+.poison .card-detail-footer {
+  background: linear-gradient(#3d1b51, #1d0b28);
+}
+.poison img {
+  background: #fdcccc;
+  background: radial-gradient(#ffc5ef95, #ffc5ef, #ba61ed);
+}
+.psychic {
+  background: linear-gradient(90deg, #c018ea, #f366b9, #ec81bf, #f366f3, #c018ea);
+}
+.psychic p {
+  color: rgba(255,255,255,.995);
+  background: linear-gradient(#3d1b51, #1d0b28);
+}
+.psychic #card-name,
+.psychic .card-detail-header,
+.psychic .card-detail-footer {
+  background: linear-gradient(#3d1b51, #1d0b28);
+}
+.psychic img {
+  background: #fdcccc;
+  background: radial-gradient(#ffc5ef95, #ffc5ef, #ba61ed);
+}
+.rock {
+  background: linear-gradient(90deg, #797773, #AFADA9, #AFADA9, #797773);
+}
+.rock p {
+  color: rgba(255,255,255,.995);
+  background: linear-gradient(#444444, #434343);
+}
+.rock #card-name,
+.rock .card-detail-header,
+.rock .card-detail-footer {
+  background: linear-gradient(#444444, #434343);
+}
+.rock img {
+  background: #fdcccc;
+  background: linear-gradient(#ffffff95, #ffffff, #b3b3b3);
+}
+.steel {
+  background: linear-gradient(90deg, #b3b3b3, #b5b5b5, #f4efef, #b5b5b5);
+}
+.steel p {
+  color: rgba(255,255,255,.995);
+  background: linear-gradient(#444444, #434343);
+}
+.steel #card-name,
+.steel .card-detail-header,
+.steel .card-detail-footer {
+  background: linear-gradient(#444444, #434343);
+}
+.steel img {
+  background: #fdcccc;
+  background: linear-gradient(#ffffff95, #ffffff, #b3b3b3);
+}
+.water {
+  background: linear-gradient(90deg, #0000ff, #5555ff, #5555ff, #0000ff);
+}
+.water p {
+  color: rgba(255,255,255,.995);
+  background: linear-gradient(#243247, #242b47);
+}
+.water #card-name,
+.water .card-detail-header,
+.water .card-detail-footer {
+  background: linear-gradient(#243247, #242b47);
+}
+.water img {
+  background: #fdcccc;
+  background: linear-gradient(#a6fcf995, #a6e6fc, #85a7ca);
+}

@@ -67,7 +67,7 @@ const state = {
     }
   },
   values: {
-    numberOfCards: 2,
+    numberOfCards: 6,
     roundsPlayed: 0,
     playerScore: 0,
     playerPokemonList: null,

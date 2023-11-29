@@ -105,7 +105,6 @@ button {
   width: 100%;
   text-align: center;
   font-size: .7em;
-  background-color: #00000095;
   border: .15rem solid #00000050;
   border-radius: .35rem;
 }
@@ -117,7 +116,6 @@ button {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #00000090;
   border: .15rem solid #00000050;
   border-radius: .35rem;
 }
@@ -136,13 +134,11 @@ button {
   aspect-ratio: 1/1;
   border: .15rem solid #00000050;
   border-radius: .35rem;
-  background-color: #ffffff99;
 }
 .card-detail .card-detail-footer {
   padding: .2rem .35rem;
   width: 100%;
   font-size: x-small;
-  background-color: #00000090;
   border: .15rem solid #00000050;
   border-radius: .35rem;
   display: grid;
