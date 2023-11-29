@@ -125,6 +125,10 @@ button {
   display: flex;
   flex-direction: column;
 }
+.card-detail .card-detail-header .types .type svg {
+  width: 1rem;
+  height: 1rem;
+}
 .card-detail #card-image {
   background-size: cover;
   padding: 1.5%;
