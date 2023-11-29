@@ -125,9 +125,15 @@
     <div class="container-right">
       <div class="enemy-cards">
       </div>
-      <div class="duel-box" style="flex-wrap: nowrap">
+      <div class="duel-box">
         <div class="your-turn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#1c031b" viewBox="0 0 256 256"><path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm12,191.13V184a12,12,0,0,0-24,0v27.13A84.18,84.18,0,0,1,44.87,140H72a12,12,0,0,0,0-24H44.87A84.18,84.18,0,0,1,116,44.87V72a12,12,0,0,0,24,0V44.87A84.18,84.18,0,0,1,211.13,116H184a12,12,0,0,0,0,24h27.13A84.18,84.18,0,0,1,140,211.13Z"></path></svg>
+          <div>
+            <h3>
+              Sua vez
+            </h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#1c031b" viewBox="0 0 256 256"><path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm12,191.13V184a12,12,0,0,0-24,0v27.13A84.18,84.18,0,0,1,44.87,140H72a12,12,0,0,0,0-24H44.87A84.18,84.18,0,0,1,116,44.87V72a12,12,0,0,0,24,0V44.87A84.18,84.18,0,0,1,211.13,116H184a12,12,0,0,0,0,24h27.13A84.18,84.18,0,0,1,140,211.13Z"></path></svg>
+          </div>
+          <span id="your-poke-attribute"></span>
         </div>
         <div class="your-poke-card">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-dotted" viewBox="0 0 16 16">
@@ -138,7 +144,13 @@
         <div class="enemy-poke-card" style="display: flex; flex-wrap: wrap;">
         </div>
         <div class="enemy-turn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#1c031b" viewBox="0 0 256 256"><path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm12,191.13V184a12,12,0,0,0-24,0v27.13A84.18,84.18,0,0,1,44.87,140H72a12,12,0,0,0,0-24H44.87A84.18,84.18,0,0,1,116,44.87V72a12,12,0,0,0,24,0V44.87A84.18,84.18,0,0,1,211.13,116H184a12,12,0,0,0,0,24h27.13A84.18,84.18,0,0,1,140,211.13Z"></path></svg>
+          <div>
+            <h3>
+              A vez dele
+            </h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#1c031b" viewBox="0 0 256 256"><path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm12,191.13V184a12,12,0,0,0-24,0v27.13A84.18,84.18,0,0,1,44.87,140H72a12,12,0,0,0,0-24H44.87A84.18,84.18,0,0,1,116,44.87V72a12,12,0,0,0,24,0V44.87A84.18,84.18,0,0,1,211.13,116H184a12,12,0,0,0,0,24h27.13A84.18,84.18,0,0,1,140,211.13Z"></path></svg>
+          </div>
+          <span id="enemy-poke-attribute"></span>
         </div>
       </div>
       <div class="your-cards">
