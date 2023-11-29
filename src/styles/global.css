@@ -188,7 +188,7 @@
   gap: 3%;
 }
 .enemy-card, .your-poke-card,
-.enemy-poke-card, .your-card {
+.enemy-poke-card, .your-card, .defeated-card {
   padding: .5rem;
   width: 15%;
   min-width: 6rem;
@@ -202,8 +202,15 @@
   justify-content: space-between;
 }
 .enemy-card {
+  position: relative;
+}
+.enemy-card::after {
+  content: "";
+  position: absolute;
   background-image: url("../images/tcg-card-back.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
+  inset: 0;
 }
 
 [class$="poke-card"] {
@@ -248,7 +255,8 @@
 .your-card {
   text-transform: capitalize;
 }
-.your-card p {
+.your-card p,
+.enemy-card p {
   width: 100%;
   text-align: center;
   font-size: xx-small;
@@ -258,7 +266,8 @@
   border-radius: .2rem;
   overflow: hidden;
 }
-.your-card img {
+.your-card img,
+.enemy-card img {
   background-size: cover;
   padding: 1.5%;
   width: 100%;
@@ -266,4 +275,10 @@
   border: .15rem solid #00000050;
   border-radius: .35rem;
   background-color: #ffffff99;
+}
+.defeated-card {
+  background-image: url("../images/tcg-card-back.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  inset: 0;
 }
