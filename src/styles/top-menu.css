@@ -1,0 +1,116 @@
+.top-menu {
+  padding: 4px 6px;
+  width: 100vw;
+  border-bottom-width: 2px;
+  border-bottom-color: #00000050;
+  border-bottom-style: solid;
+  background-color: #efefeff2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.list-menu {
+  padding: 4px 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  position: relative;
+}
+.list-menu span {
+  padding: 3px 0 0 0;
+}
+.sub-list-menu {
+  width: 200%;
+  padding: 20px 12px 16px 12px;
+  border-right-width: 2px;
+  border-right-color: #00000050;
+  border-right-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #00000050;
+  border-bottom-style: solid;
+  border-left-width: 2px;
+  border-left-color: #00000050;
+  border-left-style: solid;
+  border-end-end-radius: 15px;
+  border-end-start-radius: 15px;
+  background-color: #efefeff2;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1vh;
+  position: absolute;
+  top: 109%;
+  left: 0;
+}
+
+.profile-menu {
+  padding: 4px 12px;
+  text-transform: capitalize;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  position: relative;
+}
+.profile-menu span {
+  padding: 3px 0 0 0;
+}
+.sub-profile-menu {
+  width: 100%;
+  padding: 16px 12px;
+  border-right-width: 2px;
+  border-right-color: #00000050;
+  border-right-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #00000050;
+  border-bottom-style: solid;
+  border-left-width: 2px;
+  border-left-color: #00000050;
+  border-left-style: solid;
+  border-end-end-radius: 15px;
+  border-end-start-radius: 15px;
+  background-color: #efefeff2;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1vh;
+  position: absolute;
+  top: 109%;
+  right: 0;
+}
+.sub-profile-item {
+  width: 100%;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: .5vh;
+}
+.sub-profile-item span:hover {
+  width: 100%;
+  background-color: #00000050;
+  text-align: center;
+  border-radius: 15px;
+}
+.sub-profile-subitem {
+  width: 100%;
+  text-align: center;
+  font-size: smaller;
+}
+.sub-profile-subitem:hover {
+  background-color: #00000050;
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 400px) {
+  .list-menu span {
+    display: none;
+  }
+  .sub-profile-menu {
+    width: 95vw;
+  }
+}
