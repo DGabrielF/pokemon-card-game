@@ -1,0 +1,81 @@
+.homepage {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: space-around;
+  gap: 1vw;
+  overflow: auto;
+}
+#get-card, #select-cards, #search-duel, #ranking {
+  padding: 6px 6px 4px 6px;
+  height: 100%;
+  border: 2px solid #00000050;
+  border-radius: 15px;
+  background-color: #00000030;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5vh;
+}
+
+#get-card div, #select-cards div, #search-duel div, #ranking div {
+  padding: 6px 6px 4px 6px;
+  height: 100%;
+  width: 98%;
+  max-width: 280px;
+  border: 2px solid #00000050;
+  border-radius: 15px;
+  background-color: #00000030;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#get-card img, #select-cards img, #search-duel img, #ranking img {
+  width: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 419px) {
+  .homepage {
+    flex-direction: column;
+    gap: 1vh;
+  }
+  #get-card, #select-cards, #search-duel, #ranking {
+    max-height: 200px;
+    width: 100%;
+  }
+  #get-card div, #select-cards div, #search-duel div, #ranking div {
+    width: 100%;
+    overflow: hidden;
+  }
+  #get-card img, #select-cards img, #search-duel img, #ranking img {
+    width: 100%;
+    object-fit: cover;
+    transform: translateY(-25%);
+  }
+}
+
+@media screen and (min-width: 420px) and (max-width: 800px) {
+  .homepage {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    gap: 1vw;
+  }
+  #get-card, #select-cards, #search-duel, #ranking {
+    /* max-height: 0; */
+    min-height: 262px;
+    height: 48%;
+    width: 48%;
+  }
+  #get-card div, #select-cards div, #search-duel div, #ranking div {
+    width: 95%;
+    overflow: hidden;
+  }
+  #get-card img, #select-cards img, #search-duel img, #ranking img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
