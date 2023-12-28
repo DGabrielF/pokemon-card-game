@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js';
-import { getFirestore, addDoc, collection, getDocs, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
+import { getFirestore, addDoc, collection, getDocs, getDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -31,6 +31,27 @@ export async function fetchDataFromFirebase(collectionName) {
   }
 }
 
+export async function fetchSingleDocumentFromFirebase(collectionName, documentId) {
+  try {
+    const docRef = doc(db, collectionName, documentId);
+    const docSnapshot = await getDoc(docRef);
+
+    if (docSnapshot.exists()) {
+      const data = {
+        id: docSnapshot.id,
+        ...docSnapshot.data(),
+      };
+      return data;
+    } else {
+      console.error('Documento não encontrado');
+      return null;
+    }
+  } catch (error) {
+    console.error(firebaseErrorMessage[error.message]);
+    return false;
+  }
+}
+
 export async function insertDataFromArrayToFireBase(itemsArray, collectionName, ...rest) {
   try {
     itemsArray.map(async (item) => {
@@ -41,10 +62,10 @@ export async function insertDataFromArrayToFireBase(itemsArray, collectionName, 
   }
 }
 
-export async function firebaseSignin(email, password, user) {
+export async function firebaseSignin(email, password) {
   try {
     await signInWithEmailAndPassword(auth, email, password);
-    user = auth.currentUser;    
+    return auth.currentUser;    
   } catch (error) {
     return firebaseErrorMessage[error.message];    
   }
@@ -65,7 +86,6 @@ export async function firebaseSignup(email, password, name) {
       blockList:[],
       requestList:[],
       });
-      console.log("banco de dados criado")
   } catch (error) {
     console.error(firebaseErrorMessage[error.message]);
     console.error(error.message);
