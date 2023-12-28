@@ -1,0 +1,28 @@
+.central-container {
+  width: 50vw;
+  max-width: 520px;
+  padding: 8px 0;
+  background-color: #efefef99;
+  border: 2px solid #00000050;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 400px) {
+  .central-container {
+    width: 95vw;
+  }
+}
+@media screen and (min-width: 400px) and (max-width: 800px) {
+  .central-container {
+    width: 75vw;
+  }
+}

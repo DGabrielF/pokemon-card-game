@@ -20,6 +20,12 @@ export function loginBox(handlePage, createCentralContainer) {
   const recover = document.createElement("div");
   recover.textContent = "Recuperar senha";
   centralContainer.appendChild(recover)
+
+  centralContainer.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      handleLogin(handlePage);
+    }
+  });
 }
 function createEntriesArea(centralContainer) {
   const emailArea = document.createElement("div");
@@ -115,6 +121,12 @@ export function registerBox(handlePage, createCentralContainer) {
   createEntriesRegisterArea(centralContainer);
 
   createRegisterButtonsArea(handlePage, centralContainer);
+
+  centralContainer.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      handleRegister(handlePage);
+    }
+  });
 }
 function createEntriesRegisterArea(centralContainer) {
   const passwordArea = document.createElement("div");
