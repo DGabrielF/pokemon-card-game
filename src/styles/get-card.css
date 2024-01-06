@@ -1,0 +1,89 @@
+.get-card {
+  padding: 5px;
+  width: 98%;
+  max-width: 500px;
+  height: 98%;
+  border: 2px solid #00000050;
+  border-radius: 15px;
+  background-color: #c7d1da;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vh;
+}
+.coin-area, .get-card-area, .confirmation {
+  width: 100%;
+  max-width: 490px;
+  padding: 6px 10px 4px 10px;
+  border: 2px solid #00000050;
+  border-radius: 15px;
+  background-color: #efefef99;
+  display: flex;
+  align-items: center;
+  gap: .5vh;
+}
+.coin-area {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.get-card-area {
+  height: 100%;
+  
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+[id^="get"] {
+  padding: 3px 3px 3px 15px;
+  border-radius: 15px;
+  outline: 2px solid #00000050;
+  background-color: #efefef99;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+[id^="get"]:hover {
+  background-color: #66dd6630;
+}
+[id^="get"] div {
+  min-width: 114px;
+  padding: 1px 5px;
+  border: 2px solid #00000050;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+[id^="get"] div:hover {
+  background-color: #66dd6650;
+}
+
+.confirmation {
+  min-height: 135px;
+  padding: 8px 12px;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  gap: 1vh;
+}
+
+.show-card-box {
+  padding: 6px 10px 4px 10px;
+  width: 98%;
+  text-align: center;
+  border: 2px solid #00000050;
+  border-radius: 15px;
+  background-color: #c7d1da;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+}
+
