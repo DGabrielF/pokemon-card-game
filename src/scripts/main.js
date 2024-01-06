@@ -3,7 +3,7 @@ import { topMenu } from "./components/top-menu.js";
 import { homePage } from "./pages/home.js";
 import { getCard } from "./pages/getCard.js";
 import { selectCard } from "./pages/selectCard.js";
-import { releases } from "./pages/releases.js";
+// import { releases } from "./pages/releases.js";
 import { searchDuel } from "./pages/searchDuel.js";
 import { generateEnemy } from "./generate-enemy.js";
 import { battle } from "./pages/battle.js";
