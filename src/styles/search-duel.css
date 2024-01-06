@@ -1,0 +1,40 @@
+.enemy-ia, .enemy-player {
+  width: 100%;
+  max-width: 790px;
+  padding: 6px;
+  border: 2px solid #00000050;
+  border-radius: 15px;
+  background-color: #efefef99;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5vh;
+}
+
+.enemy {
+  padding: 2px 6px;
+  width: 100%;
+  border: 2px solid #00000050;
+  border-radius: 15px;
+  background-color: #efefef99;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.enemy div {
+  height: 27px;
+  width: 27px;
+  padding: 3px;
+  border-radius: 25px;
+  background-color: #00000010;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.enemy div svg {
+  fill: #000000cc;
+}
+.enemy div svg:hover {
+  fill: #ee0000cc;
+}
