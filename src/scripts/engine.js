@@ -66,7 +66,7 @@ const state = {
     result: {
       page: document.querySelector(".continue-page"),
       message: document.querySelector(".result"),
-    }
+    },
   },
   values: {
     numberOfCards: 6,
@@ -86,11 +86,6 @@ const state = {
     pokemonSelector: document.querySelector(".confirm-pokemon"),
     continueButton: document.querySelector(".restart")
   }
-}
-async function getPokemonData(pokemonId) {
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
-  const data = await response.json();
-  return data;
 }
 function randomGenerator() {
   return(Math.floor(Math.random()*1017)+1);
