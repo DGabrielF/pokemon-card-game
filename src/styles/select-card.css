@@ -1,0 +1,63 @@
+.select-card {
+  padding: 5px;
+  width: 98%;
+  max-width: 800px;
+  height: 98%;
+  border: 2px solid #00000050;
+  border-radius: 15px;
+  background-color: #c7d1da;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vh;
+}
+.search-area, .card-area, .selected-area {
+  width: 100%;
+  max-width: 790px;
+  padding: 6px;
+  border: 2px solid #00000050;
+  border-radius: 15px;
+  background-color: #efefef99;
+  display: flex;
+  align-items: center;
+  gap: .5vh;
+}
+.search-area {
+  flex-direction: row;
+  justify-content: space-between;
+}
+.card-area {
+  height: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.selected-area {
+  width: 100%;
+  max-width: 638px;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+  gap: .5vw;
+}
+
+@media screen and (max-width: 400px) {
+  .search-span {
+    display: none;
+  }
+}
+@media screen and (max-width: 210px) {
+  .card-area {
+    height: 100%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    overflow-y: auto;
+  }
+  .selected-area {
+    height: 105px;
+  }
+  .search-svg {
+    display: none;
+  }
+}
