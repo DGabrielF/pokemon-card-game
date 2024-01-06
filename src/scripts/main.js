@@ -5,8 +5,7 @@ import { getCard } from "./pages/getCard.js";
 import { selectCard } from "./pages/selectCard.js";
 // import { releases } from "./pages/releases.js";
 import { searchDuel } from "./pages/searchDuel.js";
-import { generateEnemy } from "./generate-enemy.js";
-import { battle } from "./pages/battle.js";
+// import { generateEnemy } from "./generate-enemy.js";
 
 export const state = {
   user: {},

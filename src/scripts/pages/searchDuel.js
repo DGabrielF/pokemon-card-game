@@ -1,4 +1,4 @@
-import { fetchDataFromFirebase, fetchIdsFromCollection, fetchSingleDocumentFromFirebase } from "../firebase.js";
+import { fetchIdsFromCollection, fetchSingleDocumentFromFirebase } from "../firebase.js";
 import { state } from "../main.js";
 import { battle } from "./battle.js";
 
