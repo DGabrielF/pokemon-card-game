@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js';
-import { getFirestore, addDoc, collection, getDocs, getDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
+import { getFirestore, collection, doc, addDoc, getDoc, getDocs, setDoc, updateDoc, arrayUnion } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -16,7 +16,7 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 export async function fetchDataFromFirebase(collectionName) {
-  try{
+  try {
     const collectionRef = collection(db, collectionName);
     const snapshot = await getDocs(collectionRef);
     const dataFromFirestore = snapshot.docs.map((doc) => ({
@@ -30,7 +30,17 @@ export async function fetchDataFromFirebase(collectionName) {
     return false;
   }
 }
-
+export async function fetchIdsFromCollection(collectionName) {
+  try {
+    const collectionRef = collection(db, collectionName);
+    const snapshot = await getDocs(collectionRef);
+    const documentIDs = snapshot.docs.map((doc) => doc.id);
+    return documentIDs;
+  } catch (error) {
+    console.error(firebaseErrorMessage[error.message]);
+    return false;
+  }
+}
 export async function fetchSingleDocumentFromFirebase(collectionName, documentId) {
   try {
     const docRef = doc(db, collectionName, documentId);
@@ -51,14 +61,40 @@ export async function fetchSingleDocumentFromFirebase(collectionName, documentId
     return false;
   }
 }
-
-export async function insertDataFromArrayToFireBase(itemsArray, collectionName, ...rest) {
+export async function addDocToFirebase(data, collectionName, ...rest) {
+  try {
+    await addDoc(collection(db, collectionName, ...rest), {...data});
+  } catch (error) {
+    console.error(firebaseErrorMessage[error.message]);
+  }  
+}
+export async function insertDataFromArrayToFirebase(itemsArray, collectionName, ...rest) {
   try {
     itemsArray.map(async (item) => {
       await addDoc(collection(db, collectionName, ...rest), {...item});
     });
   } catch (error) {
     console.error(firebaseErrorMessage[error.message]);
+  }
+}
+export async function updateFieldDocument(collectionName, documentId, field, value) {
+  try {
+    const docRef = doc(db, collectionName, documentId);
+    await updateDoc(docRef, {
+      [field]: value
+    });
+  } catch (error) {
+    console.error(firebaseErrorMessage[error.message]);
+  }
+}
+export async function addDataOnArrayField(collectionName, documentId, field, value) {
+  try {
+    const docRef = doc(db, collectionName, documentId);
+    await updateDoc(docRef, {
+      [field]: arrayUnion(value)
+    })
+  } catch (error) {
+    console.error(error.message);
   }
 }
 
@@ -70,7 +106,6 @@ export async function firebaseSignin(email, password) {
     return firebaseErrorMessage[error.message];    
   }
 }
-
 export async function firebaseSignup(email, password, name) {
   try {
     await createUserWithEmailAndPassword(auth, email, password);
@@ -85,20 +120,20 @@ export async function firebaseSignup(email, password, name) {
       applicantsList:[],
       blockList:[],
       requestList:[],
+      victories: 0,
+      losses: 0,
+      matchesPlayed: 0,
       });
   } catch (error) {
     console.error(firebaseErrorMessage[error.message]);
-    console.error(error.message);
   }
 }
-
 export async function firebaseSignout (user) {
   try {
     await signOut(auth);
     Object.keys(user).map(key => obj[key] = null);
   } catch (error) {
     console.error(firebaseErrorMessage[error.message]);
-    console.error(error.message);
   }
 }
 
