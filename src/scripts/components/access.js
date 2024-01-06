@@ -1,10 +1,9 @@
 import { fetchSingleDocumentFromFirebase, firebaseSignin, firebaseSignup } from "../firebase.js";
-import { state } from "../main.js";
+import { createCentralContainer, handlePage, state } from "../main.js";
 
 // Login page and tools
-export function loginBox(handlePage, createCentralContainer) {
-  const container = document.querySelector(".container");
-  container.innerHTML = "";
+export function loginBox() {
+  state.view.container.innerHTML = "";
 
   const centralContainer = createCentralContainer();
 
@@ -15,7 +14,7 @@ export function loginBox(handlePage, createCentralContainer) {
 
   createEntriesArea(centralContainer);
 
-  createLoginButtonsArea(handlePage, centralContainer);
+  createLoginButtonsArea(centralContainer);
 
   const recover = document.createElement("div");
   recover.textContent = "Recuperar senha";
@@ -23,7 +22,7 @@ export function loginBox(handlePage, createCentralContainer) {
 
   centralContainer.addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
-      handleLogin(handlePage);
+      handleLogin();
     }
   });
 }
@@ -56,13 +55,13 @@ function createEntriesArea(centralContainer) {
 
   centralContainer.appendChild(passwordArea);
 }
-function createLoginButtonsArea(handlePage ,centralContainer) {
+function createLoginButtonsArea(centralContainer) {
   const buttonArea = document.createElement("div");
   buttonArea.classList.add("button-area");
 
   const loginButton = document.createElement("button");
   loginButton.textContent = "Entrar";
-  loginButton.addEventListener("click", () => handleLogin(handlePage));
+  loginButton.addEventListener("click", () => handleLogin());
   buttonArea.appendChild(loginButton);
   
   const signUpButton = document.createElement("button");
@@ -72,7 +71,8 @@ function createLoginButtonsArea(handlePage ,centralContainer) {
 
   centralContainer.appendChild(buttonArea);
 }
-async function handleLogin(handlePage) {
+async function handleLogin() {
+  const buttonArea = document.querySelector(".button-area")
   const email = document.getElementById("e-mail-input").value;
   const password = document.getElementById("password-input").value;
 
@@ -81,18 +81,16 @@ async function handleLogin(handlePage) {
 
   if (emptyEmailVerify(email) && emptyPasswordVerify(password)) {
     const user = await firebaseSignin(email, password);
-    if (!user.uid) {
-      const fieldFailedInValidation = document.querySelector(".button-area");
+    if (!user.uid) {      
       const message = document.createElement("p");
       message.classList.add("error-message");
       message.textContent = user;
-      fieldFailedInValidation.insertAdjacentElement("afterend", message);
+      buttonArea.insertAdjacentElement("afterend", message);
     } else {
-      const success = document.querySelector(".button-area");
       const message = document.createElement("p");
       message.classList.add("success-message");
       message.textContent = "Conectado com sucesso.";
-      success.insertAdjacentElement("afterend", message);
+      buttonArea.insertAdjacentElement("afterend", message);
       state.user.id = user.uid;
       setTimeout(await setUser(), 5000);
       setTimeout(handlePage("logedin"), 5000);
@@ -105,9 +103,8 @@ async function setUser () {
   }
 }
 // Register page and tools
-export function registerBox(handlePage, createCentralContainer) {
-  const container = document.querySelector(".container");
-  container.innerHTML = "";
+export function registerBox() {
+  state.view.container.innerHTML = "";
 
   const centralContainer = createCentralContainer();
 
@@ -120,11 +117,11 @@ export function registerBox(handlePage, createCentralContainer) {
 
   createEntriesRegisterArea(centralContainer);
 
-  createRegisterButtonsArea(handlePage, centralContainer);
+  createRegisterButtonsArea(centralContainer);
 
   centralContainer.addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
-      handleRegister(handlePage);
+      handleRegister();
     }
   });
 }
@@ -156,13 +153,13 @@ function createEntriesRegisterArea(centralContainer) {
 
   centralContainer.appendChild(emailArea);
 }
-function createRegisterButtonsArea(handlePage, centralContainer) {
+function createRegisterButtonsArea(centralContainer) {
   const buttonArea = document.createElement("div");
   buttonArea.classList.add("button-area");
 
   const loginButton = document.createElement("button");
   loginButton.textContent = "Confirmar";
-  loginButton.addEventListener("click", () => handleRegister(handlePage));
+  loginButton.addEventListener("click", () => handleRegister());
   buttonArea.appendChild(loginButton);
 
   const signUpButton = document.createElement("button");
@@ -172,7 +169,7 @@ function createRegisterButtonsArea(handlePage, centralContainer) {
 
   centralContainer.appendChild(buttonArea);
 }
-async function handleRegister(handlePage) {
+async function handleRegister() {
   const email = document.getElementById("e-mail-input").value;
   const password = document.getElementById("password-input").value;
   const passwordToVerify = document.getElementById("confirm-password-input").value;
@@ -186,21 +183,19 @@ async function handleRegister(handlePage) {
   if (passwordValidation(password) && comparePasswords(password, passwordToVerify)) {
     const fail = await firebaseSignup(email, password, name);
     if (fail) {
-      const fieldFailedInValidation = document.querySelector(".button-area");
       const message = document.createElement("p");
       message.classList.add("error-message");
       message.textContent = fail;
-      fieldFailedInValidation.insertAdjacentElement("afterend", message);
+      state.view.buttonArea.insertAdjacentElement("afterend", message);
     } else {
-      const success = document.querySelector(".button-area");
       const message = document.createElement("p");
       message.classList.add("success-message");
       message.textContent = "Cadastrado com sucesso.";
-      success.insertAdjacentElement("afterend", message);
+      state.view.buttonArea.insertAdjacentElement("afterend", message);
       const message1 = document.createElement("p");
       message1.classList.add("success-message");
       message1.textContent = "Faça seu primeiro login";
-      success.insertAdjacentElement("afterend", message1);
+      state.view.buttonArea.insertAdjacentElement("afterend", message1);
       setTimeout(handlePage("signin"), 5000);
     }
   }
