@@ -23,10 +23,9 @@ export async function fetchDataFromFirebase(collectionName) {
       id: doc.id,
       ...doc.data(),
     }));
-    state.values.itemsList = dataFromFirestore;
     return dataFromFirestore;
   } catch (error) {
-    console.error(firebaseErrorMessage[error.message])
+    console.log(error);
     return false;
   }
 }

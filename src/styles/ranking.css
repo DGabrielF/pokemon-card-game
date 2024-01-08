@@ -1,0 +1,107 @@
+.ranking-page {
+  padding: 5px;
+  width: 98%;
+  max-width: 800px;
+  height: 98%;
+
+  border: 2px solid #00000050;
+  border-radius: 15px;
+  background-color: #c7d1da;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vh;
+}
+/* Filter Area */
+.filter-area {
+  padding: 5px;
+  width: 100%;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+
+  position: relative;
+}
+.filter-menu {
+  width: 100%;
+  max-width: 450px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+
+  position: absolute;
+  left: 50%;
+  top: 100%;
+
+  transform: translateX(-50%);
+}
+.filter-menu button {
+  letter-spacing: 5px;
+}
+/* Player Position */
+/* Ranking */
+.ranking-area {
+  padding: 5px;
+  width: 100%;
+  border: 2px solid #00000050;
+  border-radius: 15px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.ranking-item {
+  padding: 5px 4vw;
+  width: 100%;
+
+  border: 2px solid #00000050;
+  border-radius: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* Seletor de páginas */
+.pages-area {
+  padding: 5px;
+
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.pages-area .page {
+  padding: 2px 0 0 2px;
+
+  width: 30px;
+  height: 30px;
+
+  border: 2px solid #00000050;
+  border-radius: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pages-area .page.selected {
+  background-color: #8eeebbaa;
+}
+#left-button,
+#right-button {
+  padding: 2px 0 0 0;
+  width: 30px;
+  height: 30px;
+
+  border-radius: 15px;
+}
+#left-button:disabled:hover,
+#right-button:disabled:hover {
+  outline-style: none;
+}

@@ -1,5 +1,5 @@
 import { updateFieldDocument } from "../firebase.js";
-import { state } from "../main.js";
+import { cleanOrCreateBox, state } from "../main.js";
 import { createCard, getPokemonData } from "../pokemon.js";
 import { result } from "./result.js";
 
@@ -28,18 +28,13 @@ const localState = {
 
 export function battle( player, enemy, enemyDB ) {
   cleanState();
-
-  let content = document.querySelector(".content");
-  if (content) {
-    content.innerHTML = "";
-  } else {
-    content = document.createElement("div");
-    content.classList.add("content");
-    content.classList.add("display-flex-col");
-  };
+  
   localState.player = {...localState.player, ...player};
   localState.enemy = {...localState.enemy, ...enemy};
   localState.values.enemyDB = enemyDB;
+
+  const content = cleanOrCreateBox("content");
+  content.classList.add("display-flex-col");
 
   const contentDuelPage = document.createElement("div");
   contentDuelPage.classList.add("duel-page");

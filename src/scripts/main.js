@@ -4,6 +4,7 @@ import { homePage } from "./pages/home.js";
 import { getCard } from "./pages/getCard.js";
 import { selectCard } from "./pages/selectCard.js";
 import { searchDuel } from "./pages/searchDuel.js";
+import { ranking } from "./pages/ranking.js";
 
 export const state = {
   user: {},
@@ -90,7 +91,9 @@ export const state = {
       </svg>`,
     },
     icons: {
-      magnifyingGlass: `lupa`,
+      magnifyingGlass: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M192,112a80,80,0,1,1-80-80A80,80,0,0,1,192,112Z" opacity="0.2"></path><path d="M229.66,218.34,179.6,168.28a88.21,88.21,0,1,0-11.32,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg>`,
+      caretLeft: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M160,48V208L80,128Z" opacity="0.2"></path><path d="M163.06,40.61a8,8,0,0,0-8.72,1.73l-80,80a8,8,0,0,0,0,11.32l80,80A8,8,0,0,0,168,208V48A8,8,0,0,0,163.06,40.61ZM152,188.69,91.31,128,152,67.31Z"></path></svg>`,
+      caretRight: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M176,128,96,208V48Z" opacity="0.2"></path><path d="M181.66,122.34l-80-80A8,8,0,0,0,88,48V208a8,8,0,0,0,13.66,5.66l80-80A8,8,0,0,0,181.66,122.34ZM104,188.69V67.31L164.69,128Z"></path></svg>`,
     },
     types: {
       bug: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256"><path d="M200,104v48a72,72,0,0,1-72,72h0a72,72,0,0,1-72-72V104Z" opacity="0.2"></path><path d="M208,144h16a8,8,0,0,0,0-16H208V112h16a8,8,0,0,0,0-16H207.6a79.76,79.76,0,0,0-21.44-46.85l19.5-19.49a8,8,0,1,0-11.32-11.32l-20.29,20.3a79.74,79.74,0,0,0-92.1,0L61.66,18.34A8,8,0,0,0,50.34,29.66l19.5,19.49A79.76,79.76,0,0,0,48.4,96H32a8,8,0,0,0,0,16H48v16H32a8,8,0,0,0,0,16H48v8c0,2.7.14,5.37.4,8H32a8,8,0,0,0,0,16H51.68a80,80,0,0,0,152.64,0H224a8,8,0,0,0,0-16H207.6c.26-2.63.4-5.3.4-8ZM128,40a64.07,64.07,0,0,1,63.48,56h-127A64.07,64.07,0,0,1,128,40Zm8,175.48V136a8,8,0,0,0-16,0v79.48A64.07,64.07,0,0,1,64,152V112H192v40A64.07,64.07,0,0,1,136,215.48Z" opacity="0.6"></path></svg>`,
@@ -156,9 +159,21 @@ export function handleContent(content) {
   }
 }
 
+export function cleanOrCreateBox(className) {
+  let box = document.querySelector(`.${className}`);
+  if (box) {
+    box.innerHTML = "";
+  } else {
+    box = document.createElement("div");
+    box.classList.add(className);
+  }
+  return box;
+}
+
 function init() {
   topMenu();
-  loginBox();
+  // loginBox();
+  ranking();
 }
 
 init();

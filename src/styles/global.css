@@ -10,6 +10,7 @@
 @import url("./detailed-card.css");
 @import url("./card.css");
 @import url("./result.css");
+@import url("./ranking.css");
 
 .container {
   height: 100vh;
@@ -83,7 +84,7 @@ button {
   text-transform: uppercase;
   font-weight: 700;
   border: 2px solid #00000050;
-  border-radius: 12px;
+  border-radius: 15px;
 }
 button:hover {
   outline-width: 1px;
@@ -214,12 +215,6 @@ svg {
   align-items: center;
   justify-content: space-between;
   font-size: small;
-}
-button {
-  padding: .5rem 0;
-  width: 100%;
-  text-transform: capitalize;
-  border-radius: .65rem;
 }
 
 .container-right {
