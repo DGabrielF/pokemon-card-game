@@ -125,6 +125,13 @@ async function confirmPurchase(key) {
   let cashback = 0;
   const supportArray = [];
   const nameArray = [];
+  let cardArea = document.querySelector(".card-area");
+  if (cardArea) {
+    cardArea.innerHTML = "";
+  } else {
+    cardArea = document.createElement("div");
+    cardArea.classList.add("card-area");
+  };
   while (supportArray.length < localState.options[key].cards) {
     const drawnPokemon = await drawCard();
     if (drawnPokemon && !state.user.cards.includes(drawnPokemon.id) && !supportArray.includes(drawnPokemon.id)) {
@@ -132,8 +139,7 @@ async function confirmPurchase(key) {
       supportArray.push(drawnPokemon.id);
       nameArray.push(drawnPokemon.name);
       
-      const cardArea = document.querySelector(".card-area");
-      const card = createCard(drawnPokemon);
+      const card = await createCard(drawnPokemon);
       cardArea.appendChild(card);
 
       await addDataOnArrayField("Users", state.user.id, "cards", drawnPokemon.id);
@@ -145,8 +151,9 @@ async function confirmPurchase(key) {
     }
   }
   const coins = document.querySelector("#coins");
-  coins.textContent = (state.user.coins - localState.options[key].value + cashback);
-  await updateFieldDocument("Users", state.user.id, "coins", (state.user.coins - localState.options[key].value + cashback));
+  state.user.coins -= localState.options[key].value + cashback;
+  coins.textContent = state.user.coins;
+  await updateFieldDocument("Users", state.user.id, "coins", state.user.coins);
 }
 
 function showObtainedCards() {

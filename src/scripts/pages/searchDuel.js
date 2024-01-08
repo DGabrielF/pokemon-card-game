@@ -92,7 +92,7 @@ async function fillUserEnemies(enemyPlayer) {
       enemy.appendChild(IASpan);
       if (item.hand.length === 6) {
         const duelButton = document.createElement("div");
-        duelButton.innerHTML = state.images.attributes.attack;
+        duelButton.innerHTML = state.attributes.attack.image;
         duelButton.addEventListener("click", (e) => battle(state.user, item, "Users"));
         enemy.appendChild(duelButton);
       }

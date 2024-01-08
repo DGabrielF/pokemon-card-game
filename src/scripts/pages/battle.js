@@ -27,6 +27,8 @@ const localState = {
 }
 
 export function battle( player, enemy, enemyDB ) {
+  cleanState();
+
   let content = document.querySelector(".content");
   if (content) {
     content.innerHTML = "";
@@ -340,7 +342,7 @@ function enemyAttributeSelector() {
   updateAttributeSelectedArea()
 }
 
-async function comparison(playerAttribute, enemyAttribute) {
+async function comparison(playerAttribute, enemyAttribute) { 141
   const round = document.querySelector("#round");
   round.textContent = localState.values.round;
   
@@ -354,11 +356,13 @@ async function comparison(playerAttribute, enemyAttribute) {
     if (winner === "player") {
       await updateFieldDocument(localState.values.playerDB, localState.player.id, "victories", localState.player.victories + 1);
       await updateFieldDocument(localState.values.playerDB, localState.player.id, "coins", localState.player.coins + playerCoins);
+      state.user.coins += playerCoins;
       
       await updateFieldDocument(localState.values.enemyDB, localState.enemy.id, "losses", localState.enemy.losses + 1);
     } else {
       await updateFieldDocument(localState.values.playerDB, localState.player.id, "losses", localState.player.losses + 1);
       await updateFieldDocument(localState.values.playerDB, localState.player.id, "coins", localState.player.coins + playerCoins -4);
+      state.user.coins += playerCoins - 4;
       
       await updateFieldDocument(localState.values.enemyDB, localState.enemy.id, "victories", localState.enemy.victories + 1);
     }
@@ -404,4 +408,23 @@ function toggleAttribute(enable) {
       button.removeEventListener("click", () => handleAttribute(button, button.id));
     }
   })
+}
+
+function cleanState() {
+  localState.values.attributeSelected = "height";
+  localState.values.playingOrder = null;
+  localState.values.winner = null;
+  localState.values.round = -1;
+  localState.values.playerDB = "Users";
+  localState.values.enemyDB = null;
+
+  localState.player.name = null;
+  localState.player.inField = null;
+  localState.player.score = 0;
+  localState.player.hand = [];
+
+  localState.enemy.name = null;
+  localState.enemy.inField = null;
+  localState.enemy.score = 0;
+  localState.enemy.hand = [];
 }

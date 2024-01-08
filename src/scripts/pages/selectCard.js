@@ -5,8 +5,7 @@ import { createCard, getPokemonData } from "../pokemon.js";
 const localState = {
   cardInMove: null,
   user: {
-    cards: [1, 4, 8, 25, 12, 48, 63, 95, 105],
-    hand: [1, 4, 8, 25, 12, 48],
+    initialHand: [],
   }
 }
 
@@ -24,10 +23,10 @@ export function selectCard() {
   contentSelectCardPage.classList.add("select-card");
 
   const cards = [...state.user.cards];
-  // const cards = [...localState.user.cards];
   const hand = [...state.user.hand];
-  // const hand = [...localState.user.hand];
+  localState.user.initialHand = [...state.user.hand];
   // Criar um input para buscar pelos pokemons usando o nome ou o id
+  // Elaborar uma forma de auto completar o nome
   const searchArea = search();
   contentSelectCardPage.appendChild(searchArea);
 
@@ -43,14 +42,29 @@ export function selectCard() {
   })
   cards.forEach(async (cardId) => await fillCardArea(hand, cardId, cardArea));  
   contentSelectCardPage.appendChild(cardArea);
+
+  const detailCard = document.createElement("div");
+  detailCard.classList.add("details");
+  const detailName = document.createElement("span");
+  detailName.id = "name";
+  detailCard.appendChild(detailName);
+  for (const attribute in state.attributes) {
+    const div = document.createElement("div");
+    div.innerHTML = state.attributes[attribute].image;
+    const span = document.createElement("span");
+    span.id = attribute;
+    div.appendChild(span);
+    detailCard.appendChild(div)
+  }
+  contentSelectCardPage.appendChild(detailCard)
   
-  // Elaborar uma forma de auto completar o nome
   const selectedArea = document.createElement("div");
   selectedArea.classList.add("selected-area");
   selectedArea.addEventListener("dragover", (e) =>  e.preventDefault());
   selectedArea.addEventListener("drop", async (e) => {
     const data = e.dataTransfer.getData("text/id");
-    const card = createCard(data);
+    const card = await createCard(data);
+    card.addEventListener("click", () => handleDetail(card))
     selectedArea.appendChild(card);
   })
   hand.forEach(async (cardId) => await fillSelectedArea(cardId, selectedArea));
@@ -68,6 +82,7 @@ async function fillSelectedArea(cardId, selectedArea) {
   const pokemon = await getPokemonData(cardId);
   const item = await createCard(pokemon);
   item.classList.add("selected-item");
+  item.addEventListener("click", () => handleDetail(item))
   item.addEventListener("dblclick", async () => {
     await removingCardSelected(pokemon, item);
   });
@@ -84,6 +99,7 @@ async function fillCardArea(hand, cardId, cardArea) {
         await addingCardSelected(pokemon, item);
       }
     });
+    item.addEventListener("click", () => handleDetail(item))
     cardArea.appendChild(item);
   }
 }
@@ -91,6 +107,7 @@ async function fillCardArea(hand, cardId, cardArea) {
 async function addingCardSelected(pokemon, item) {
   state.user.hand.push(pokemon.id);
   const itemSelected = await createCard(pokemon);
+  itemSelected.addEventListener("click", () => handleDetail(itemSelected))
   itemSelected.addEventListener("dblclick", async () => await removingCardSelected(pokemon, itemSelected));
   itemSelected.addEventListener("dragstart", (e) => {
     e.dataTransfer.setData("text/id", e.target.id);
@@ -103,6 +120,7 @@ async function addingCardSelected(pokemon, item) {
 async function removingCardSelected(pokemon, itemSelected) {
   state.user.hand = state.user.hand.filter((card) => card !== pokemon.id);
   const unselectedItem = await createCard(pokemon);
+  unselectedItem.addEventListener("click", () => handleDetail(unselectedItem))
   unselectedItem.addEventListener("dblclick", async () => await addingCardSelected(pokemon, unselectedItem));
   unselectedItem.addEventListener("dragstart", (e) => {
     e.dataTransfer.setData("text/id", e.target.id);
@@ -110,6 +128,22 @@ async function removingCardSelected(pokemon, itemSelected) {
   const cardArea = document.querySelector(".card-area");
   cardArea.appendChild(unselectedItem);
   itemSelected.remove();
+}
+
+async function handleDetail(card) {
+  const pokemon = await getPokemonData(card.id);
+  const details = document.querySelector(".details")
+  const name = document.getElementById("name");
+  name.textContent = pokemon.name;
+  for (const attribute in state.attributes) {
+    const span = document.getElementById(attribute);
+    let founded = pokemon.stats.find(item => item.stat.name === attribute);
+    if (founded) {
+      span.textContent = founded.base_stat || state.attributes[attribute].id;
+    } else {
+      span.textContent = pokemon[attribute] || state.attributes[attribute].id;
+    }
+  }
 }
 
 function search() {
@@ -151,6 +185,10 @@ function buttons() {
   const hand = state.user.hand;
   const cleanButton = document.createElement("button");
   cleanButton.textContent = "restaurar";
+  cleanButton.addEventListener("click", () => {
+    state.user.hand = localState.user.initialHand;
+    selectCard();
+  })
   buttonArea.appendChild(cleanButton);
   return buttonArea;
 }
