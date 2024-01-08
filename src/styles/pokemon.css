@@ -154,10 +154,10 @@
 }
 .grass #card-name,
 .grass .card-detail-header,
-.grass .card-detail-footer {
+[class$="-card-detail"].grass .card-detail-footer {
   background: linear-gradient(#24472C, #24472C);
 }
-.grass img {
+[class$="-card-detail"].grass img {
   background: #fdcccc;
   background: linear-gradient(#A6FCBA95, #A6FCBA, #85CA95);
 }

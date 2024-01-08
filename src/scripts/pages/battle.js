@@ -5,7 +5,7 @@ import { result } from "./result.js";
 
 const localState = {
   values: {
-    attributeSelected: "height",
+    attributeSelected: null,
     playingOrder: null,
     winner: null,
     round: -1,
@@ -149,21 +149,27 @@ function createAttributeArea() {
 
   const options = document.createElement("div");
   options.classList.add("select-attribute-area");
+  
+  const balloon = document.createElement("div");
+  balloon.classList.add("balloon");
+  balloon.textContent = "Sua vez!";
+  options.appendChild(balloon);
 
   for (const key in state.attributes ) {
-    const div = document.createElement("div");
-    div.id = key;
+    const button = document.createElement("button");
+    button.id = key;
     if (key === localState.values.attributeSelected) {
-      div.classList.add("checked");
+      button.classList.add("checked");
     };
-    div.innerHTML = state.attributes[key].image;
-    options.appendChild(div);
+    button.innerHTML = state.attributes[key].image;
+    options.appendChild(button);
   }
   attributeArea.appendChild(options);
   return attributeArea;
 }
 
 function handleAttribute(div, key) {
+  console.log("handleAttribute")
   const checked = document.querySelector(".checked");
   checked.classList.remove("checked");
   div.classList.add("checked");
@@ -273,7 +279,7 @@ function upDateDetails(pokemon, classToFind) {
   const classes = Array.from(div.classList);
   classes.forEach((className) => {
     if (!className.endsWith("card-detail")) {
-      element.classList.remove(className);
+      div.classList.remove(className);
     }
   })
 
@@ -395,11 +401,17 @@ function toggleAttribute(enable) {
   const attributeArea = document.querySelector(".select-attribute-area");
   const buttons = Array.from(attributeArea.children);
   buttons.forEach((button) => {
+    const balloon = document.querySelector(".balloon");
+    console.log(balloon);
     if (enable) {
-      button.classList.remove("unabled");
+      attributeArea.classList.remove("unable");
+      balloon.style.visibility = "visible";
+      button.disabled = false;
       button.addEventListener("click", () => handleAttribute(button, button.id));
     } else {
-      button.classList.add("unabled");
+      attributeArea.classList.add("unable");
+      balloon.style.visibility = "hidden";
+      button.disabled = true;
       button.removeEventListener("click", () => handleAttribute(button, button.id));
     }
   })
