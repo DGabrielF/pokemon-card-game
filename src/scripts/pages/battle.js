@@ -9,6 +9,7 @@ const localState = {
     playingOrder: null,
     winner: null,
     round: -1,
+    enemyDB: null
   },
   player: {
     name: null,
@@ -35,6 +36,7 @@ export function battle( player, enemy, enemyDB ) {
   };
   localState.player = {...localState.player, ...player};
   localState.enemy = {...localState.enemy, ...enemy};
+  localState.values.enemyDB = enemyDB;
 
   const contentDuelPage = document.createElement("div");
   contentDuelPage.classList.add("duel-page");
@@ -351,17 +353,17 @@ async function comparison(playerAttribute, enemyAttribute) {
       const playerCoins = 11+2*localState.player.score-1*localState.enemy.score;
       await updateFieldDocument("User", localState.player.id, "coins", localState.player.coins + playerCoins);
 
-      await updateFieldDocument(enemyDB, localState.enemy.id, "losses", localState.enemy.losses + 1);
+      await updateFieldDocument(localState.values.enemyDB, localState.enemy.id, "losses", localState.enemy.losses + 1);
       const enemyCoins = 11+2*localState.enemy.score-1*localState.player.score - 4;
-      await updateFieldDocument(enemyDB, localState.enemy.id, "coins", localState.enemy.coins + enemyCoins);
+      await updateFieldDocument(localState.values.enemyDB, localState.enemy.id, "coins", localState.enemy.coins + enemyCoins);
     } else {
       await updateFieldDocument("User", localState.player.id, "losses", localState.player.losses + 1);
       const playerCoins = 11+2*localState.player.score-1*localState.enemy.score - 4;
       await updateFieldDocument("User", localState.player.id, "coins", localState.player.coins + playerCoins);
 
-      await updateFieldDocument(enemyDB, localState.enemy.id, "victories", localState.enemy.victories + 1);
+      await updateFieldDocument(localState.values.enemyDB, localState.enemy.id, "victories", localState.enemy.victories + 1);
       const enemyCoins = 11+2*localState.enemy.score-1*localState.player.score - 4;
-      await updateFieldDocument(enemyDB, localState.enemy.id, "coins", localState.enemy.coins + enemyCoins);
+      await updateFieldDocument(localState.values.enemyDB, localState.enemy.id, "coins", localState.enemy.coins + enemyCoins);
     }
     localState.values.winner = localState[winner].name;
     result(winner, coins)
