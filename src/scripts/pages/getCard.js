@@ -133,6 +133,8 @@ async function confirmPurchase(key) {
     cardArea.classList.add("card-area");
   };
   while (supportArray.length < localState.options[key].cards) {
+    const confirmation = document.querySelector(".confirmation");
+    confirmation.innerHTML = "";
     const drawnPokemon = await drawCard();
     if (drawnPokemon && !state.user.cards.includes(drawnPokemon.id) && !supportArray.includes(drawnPokemon.id)) {
       state.user.cards.push(drawnPokemon.id);
@@ -181,8 +183,6 @@ function closeObtainedCards(fade) {
   showCardBox.remove();
   fade.remove();
 }
-
-
 
 function generateCashback(base_exp) {
   return Math.floor(Math.sqrt(base_exp));
