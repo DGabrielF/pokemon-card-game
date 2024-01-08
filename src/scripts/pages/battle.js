@@ -9,7 +9,8 @@ const localState = {
     playingOrder: null,
     winner: null,
     round: -1,
-    enemyDB: null
+    playerDB: "Users",
+    enemyDB: null,
   },
   player: {
     name: null,
@@ -348,25 +349,26 @@ async function comparison(playerAttribute, enemyAttribute) {
   const score = document.querySelector(`#${winner}-score`);
   score.textContent = localState[winner].score;
   if (localState[winner].score === 6) {
+    const playerCoins = 11+2*localState.player.score-1*localState.enemy.score;
+    const enemyCoins = 11+2*localState.enemy.score-1*localState.player.score - 4;
     if (winner === "player") {
-      await updateFieldDocument("User", localState.player.id, "victories", localState.player.victories + 1);
-      const playerCoins = 11+2*localState.player.score-1*localState.enemy.score;
-      await updateFieldDocument("User", localState.player.id, "coins", localState.player.coins + playerCoins);
-
+      await updateFieldDocument(localState.values.playerDB, localState.player.id, "victories", localState.player.victories + 1);
+      await updateFieldDocument(localState.values.playerDB, localState.player.id, "coins", localState.player.coins + playerCoins);
+      
       await updateFieldDocument(localState.values.enemyDB, localState.enemy.id, "losses", localState.enemy.losses + 1);
-      const enemyCoins = 11+2*localState.enemy.score-1*localState.player.score - 4;
-      await updateFieldDocument(localState.values.enemyDB, localState.enemy.id, "coins", localState.enemy.coins + enemyCoins);
     } else {
-      await updateFieldDocument("User", localState.player.id, "losses", localState.player.losses + 1);
-      const playerCoins = 11+2*localState.player.score-1*localState.enemy.score - 4;
-      await updateFieldDocument("User", localState.player.id, "coins", localState.player.coins + playerCoins);
-
+      await updateFieldDocument(localState.values.playerDB, localState.player.id, "losses", localState.player.losses + 1);
+      await updateFieldDocument(localState.values.playerDB, localState.player.id, "coins", localState.player.coins + playerCoins -4);
+      
       await updateFieldDocument(localState.values.enemyDB, localState.enemy.id, "victories", localState.enemy.victories + 1);
-      const enemyCoins = 11+2*localState.enemy.score-1*localState.player.score - 4;
-      await updateFieldDocument(localState.values.enemyDB, localState.enemy.id, "coins", localState.enemy.coins + enemyCoins);
     }
+
+    await updateFieldDocument(localState.values.playerDB, localState.player.id, "matchesPlayed", localState.player.matchesPlayed + 1);
+    await updateFieldDocument(localState.values.enemyDB, localState.enemy.id, "coins", localState.enemy.coins + enemyCoins);
+    await updateFieldDocument(localState.values.enemyDB, localState.enemy.id, "matchesPlayed", localState.enemy.matchesPlayed + 1);
+
     localState.values.winner = localState[winner].name;
-    result(winner, coins)
+    result(winner, playerCoins)
   } else {
     localState.values.attributeSelected = null;
     localState.player.inField = null;

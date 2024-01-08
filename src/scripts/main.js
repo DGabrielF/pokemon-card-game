@@ -3,10 +3,7 @@ import { topMenu } from "./components/top-menu.js";
 import { homePage } from "./pages/home.js";
 import { getCard } from "./pages/getCard.js";
 import { selectCard } from "./pages/selectCard.js";
-// import { releases } from "./pages/releases.js";
 import { searchDuel } from "./pages/searchDuel.js";
-import { result } from "./pages/result.js";
-// import { generateEnemy } from "./generate-enemy.js";
 
 export const state = {
   user: {},
@@ -51,11 +48,6 @@ export const state = {
       span: "ranking",
       image: "./src/images/add-card.png",
     },
-    // progress: {
-    //   id: "progress",
-    //   span: "releases",
-    //   image: "./src/images/versus.png",
-    // }
   },
   attributes: {
     height: {

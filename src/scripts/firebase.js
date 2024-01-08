@@ -84,7 +84,7 @@ export async function updateFieldDocument(collectionName, documentId, field, val
       [field]: value
     });
   } catch (error) {
-    console.error(firebaseErrorMessage[error.message]);
+    console.error(error.message);
   }
 }
 export async function addDataOnArrayField(collectionName, documentId, field, value) {
