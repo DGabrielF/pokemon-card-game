@@ -153,7 +153,7 @@ export function handleContent(content) {
   } else if (content === "searchDuel") {
     searchDuel(); 
   } else if (content === "ranking") {
-    console.log(content)
+    ranking();
   } else {
     homePage(handleContent);
   }
@@ -172,8 +172,7 @@ export function cleanOrCreateBox(className) {
 
 function init() {
   topMenu();
-  // loginBox();
-  ranking();
+  loginBox();
 }
 
 init();

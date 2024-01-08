@@ -90,7 +90,6 @@ function handleFilterMenu(filterSpan, filterArea) {
     filterMenu.remove();
   }
 }
-
 function createRanking() {
   const rankingBox = cleanOrCreateBox("ranking-area");
 
@@ -163,9 +162,7 @@ function rankedItem(index, player) {
   if (localState.criteria === "cards") {
     value.textContent = player[localState.criteria].length;
   } else if (["matchesPlayed", "victories", "performance"].includes(localState.criteria)) {
-    if (player[localState.criteria]) {
-      value.textContent = player[localState.criteria];
-    }
+    value.textContent = (player[localState.criteria])?player[localState.criteria]:0;
   }
   div.appendChild(value);
   return div;
