@@ -72,7 +72,7 @@ function createLoginButtonsArea(centralContainer) {
   centralContainer.appendChild(buttonArea);
 }
 async function handleLogin() {
-  const buttonArea = document.querySelector(".button-area")
+  const buttonArea = document.querySelector(".button-area");
   const email = document.getElementById("e-mail-input").value;
   const password = document.getElementById("password-input").value;
 
@@ -174,6 +174,7 @@ async function handleRegister() {
   const password = document.getElementById("password-input").value;
   const passwordToVerify = document.getElementById("confirm-password-input").value;
   const name = document.getElementById("name-input").value;
+  const buttonArea = document.querySelector(".button-area");
 
   const errors = document.querySelectorAll(".error-message");
   errors.forEach(error => error.remove());
@@ -186,16 +187,17 @@ async function handleRegister() {
       const message = document.createElement("p");
       message.classList.add("error-message");
       message.textContent = fail;
-      state.view.buttonArea.insertAdjacentElement("afterend", message);
+      buttonArea.insertAdjacentElement("afterend", message);
     } else {
       const message = document.createElement("p");
       message.classList.add("success-message");
       message.textContent = "Cadastrado com sucesso.";
-      state.view.buttonArea.insertAdjacentElement("afterend", message);
+      // TODO TypeError: Cannot read properties of null (reading 'insertAdjacentElement')
+      buttonArea.insertAdjacentElement("afterend", message);
       const message1 = document.createElement("p");
       message1.classList.add("success-message");
       message1.textContent = "Faça seu primeiro login";
-      state.view.buttonArea.insertAdjacentElement("afterend", message1);
+      buttonArea.insertAdjacentElement("afterend", message1);
       setTimeout(handlePage("signin"), 5000);
     }
   }
