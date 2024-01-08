@@ -20,7 +20,7 @@ export const state = {
       minPasswordSize: 6,
       maxPasswordSize: 10,
       needNumbers: true,
-      needLetters: false,
+      needLetters: true,
       needSpecialCharacter: false,
     },
   },
@@ -153,7 +153,7 @@ export function handleContent(content) {
   } else if (content === "searchDuel") {
     searchDuel(); 
   } else if (content === "ranking") {
-    ranking();
+    ranking
   } else {
     homePage(handleContent);
   }
