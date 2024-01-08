@@ -9,6 +9,7 @@
 @import url("./battle.css");
 @import url("./detailed-card.css");
 @import url("./card.css");
+@import url("./result.css");
 
 .container {
   height: 100vh;

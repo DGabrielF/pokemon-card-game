@@ -5,6 +5,7 @@ import { getCard } from "./pages/getCard.js";
 import { selectCard } from "./pages/selectCard.js";
 // import { releases } from "./pages/releases.js";
 import { searchDuel } from "./pages/searchDuel.js";
+import { result } from "./pages/result.js";
 // import { generateEnemy } from "./generate-enemy.js";
 
 export const state = {
@@ -158,8 +159,6 @@ export function handleContent(content) {
     searchDuel(); 
   } else if (content === "ranking") {
     console.log(content)
-  } else if (content === "progress") {
-    releases()
   } else {
     homePage(handleContent);
   }

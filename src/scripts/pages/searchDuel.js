@@ -65,7 +65,7 @@ async function fillIAEnemies(enemyIA) {
 
       const duelButton = document.createElement("div");
       duelButton.innerHTML = state.attributes.attack.image;
-      duelButton.addEventListener("click", (e) => battle(state.user, item));
+      duelButton.addEventListener("click", (e) => battle(state.user, item, "NPCs"));
       enemy.appendChild(duelButton);
 
       enemyIA.appendChild(enemy);
@@ -93,7 +93,7 @@ async function fillUserEnemies(enemyPlayer) {
       if (item.hand.length === 6) {
         const duelButton = document.createElement("div");
         duelButton.innerHTML = state.images.attributes.attack;
-        duelButton.addEventListener("click", (e) => battle(state.user, item));
+        duelButton.addEventListener("click", (e) => battle(state.user, item, "Users"));
         enemy.appendChild(duelButton);
       }
       

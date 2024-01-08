@@ -1,5 +1,7 @@
+import { updateFieldDocument } from "../firebase.js";
 import { state } from "../main.js";
 import { createCard, getPokemonData } from "../pokemon.js";
+import { result } from "./result.js";
 
 const localState = {
   values: {
@@ -22,7 +24,7 @@ const localState = {
   },
 }
 
-export function battle( player, enemy ) {
+export function battle( player, enemy, enemyDB ) {
   let content = document.querySelector(".content");
   if (content) {
     content.innerHTML = "";
@@ -31,11 +33,12 @@ export function battle( player, enemy ) {
     content.classList.add("content");
     content.classList.add("display-flex-col");
   };
-  localState.player.hand = [...player.hand];
-  localState.player.name = player.name;
-  localState.enemy.hand = [...enemy.hand];
-  localState.enemy.name = enemy.name;
+  localState.player = {...player};
+  localState.enemy = {...enemy};
   
+  console.log("local player", localState.player)
+  console.log("local enemy", localState.enemy)
+
   const contentDuelPage = document.createElement("div");
   contentDuelPage.classList.add("duel-page");
   
@@ -337,7 +340,7 @@ function enemyAttributeSelector() {
   updateAttributeSelectedArea()
 }
 
-function comparison(playerAttribute, enemyAttribute) {
+async function comparison(playerAttribute, enemyAttribute) {
   const round = document.querySelector("#round");
   round.textContent = localState.values.round;
   
@@ -346,8 +349,25 @@ function comparison(playerAttribute, enemyAttribute) {
   const score = document.querySelector(`#${winner}-score`);
   score.textContent = localState[winner].score;
   if (localState[winner].score === 6) {
+    if (winner === "player") {
+      await updateFieldDocument("User", localState.player.id, "victories", localState.player.victories + 1);
+      const playerCoins = 11+2*localState.player.score-1*localState.enemy.score;
+      await updateFieldDocument("User", localState.player.id, "coins", localState.player.coins + playerCoins);
+
+      await updateFieldDocument(enemyDB, localState.enemy.id, "losses", localState.enemy.losses + 1);
+      const enemyCoins = 11+2*localState.enemy.score-1*localState.player.score - 4;
+      await updateFieldDocument(enemyDB, localState.enemy.id, "coins", localState.enemy.coins + enemyCoins);
+    } else {
+      await updateFieldDocument("User", localState.player.id, "losses", localState.player.losses + 1);
+      const playerCoins = 11+2*localState.player.score-1*localState.enemy.score - 4;
+      await updateFieldDocument("User", localState.player.id, "coins", localState.player.coins + playerCoins);
+
+      await updateFieldDocument(enemyDB, localState.enemy.id, "victories", localState.enemy.victories + 1);
+      const enemyCoins = 11+2*localState.enemy.score-1*localState.player.score - 4;
+      await updateFieldDocument(enemyDB, localState.enemy.id, "coins", localState.enemy.coins + enemyCoins);
+    }
     localState.values.winner = localState[winner].name;
-    endGame();
+    result(winner, coins)
   } else {
     localState.values.attributeSelected = null;
     localState.player.inField = null;
@@ -356,17 +376,6 @@ function comparison(playerAttribute, enemyAttribute) {
     setTimeout(() => cleanDetails("enemy-card-detail"), 3000);
     setTimeout(() => updateAttributeSelectedArea(), 3000);
     setTimeout(() => handleRound(), 3000);
-  }
-}
-
-function endGame() {
-  console.log(localState.values.winner)
-  if (localState.values.winner === localState.player.name) {
-    console.log("você foi o vencedor, parabéns!")
-    console.log(`de acordo com o resultado você obeteve ${11+2*localState.player.score-1*localState.enemy.score}`)
-  } else {
-    console.log("infelizmente você foi derrotado")
-    console.log(`mas você ainda obeteve ${11+2*localState.player.score-1*localState.enemy.score}`)
   }
 }
 
