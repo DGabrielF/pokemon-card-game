@@ -33,11 +33,8 @@ export function battle( player, enemy, enemyDB ) {
     content.classList.add("content");
     content.classList.add("display-flex-col");
   };
-  localState.player = {...player};
-  localState.enemy = {...enemy};
-  
-  console.log("local player", localState.player)
-  console.log("local enemy", localState.enemy)
+  localState.player = {...localState.player, ...player};
+  localState.enemy = {...localState.enemy, ...enemy};
 
   const contentDuelPage = document.createElement("div");
   contentDuelPage.classList.add("duel-page");
