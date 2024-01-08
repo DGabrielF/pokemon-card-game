@@ -120,6 +120,7 @@ export async function firebaseSignup(email, password, name) {
       blockList:[],
       requestList:[],
       victories: 0,
+      consecutiveVictories: 0,
       losses: 0,
       matchesPlayed: 0,
       });

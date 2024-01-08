@@ -356,16 +356,19 @@ async function comparison(playerAttribute, enemyAttribute) { 141
     const enemyCoins = 11+2*localState.enemy.score-1*localState.player.score - 4;
     if (winner === "player") {
       await updateFieldDocument(localState.values.playerDB, localState.player.id, "victories", localState.player.victories + 1);
-      await updateFieldDocument(localState.values.playerDB, localState.player.id, "coins", localState.player.coins + playerCoins);
-      state.user.coins += playerCoins;
+      await updateFieldDocument(localState.values.playerDB, localState.player.id, "consecutiveVictories", localState.player.consecutiveVictories + 1);
+      await updateFieldDocument(localState.values.playerDB, localState.player.id, "coins", localState.player.coins + playerCoins + localState.player.consecutiveVictories);
+      state.user.coins += playerCoins + localState.player.consecutiveVictories;
       
       await updateFieldDocument(localState.values.enemyDB, localState.enemy.id, "losses", localState.enemy.losses + 1);
     } else {
       await updateFieldDocument(localState.values.playerDB, localState.player.id, "losses", localState.player.losses + 1);
+      await updateFieldDocument(localState.values.playerDB, localState.player.id, "consecutiveVictories", 0);
       await updateFieldDocument(localState.values.playerDB, localState.player.id, "coins", localState.player.coins + playerCoins -4);
       state.user.coins += playerCoins - 4;
       
       await updateFieldDocument(localState.values.enemyDB, localState.enemy.id, "victories", localState.enemy.victories + 1);
+      await updateFieldDocument(localState.values.enemyDB, localState.enemy.id, "consecutiveVictories", localState.enemy.consecutiveVictories + 1);
     }
 
     await updateFieldDocument(localState.values.playerDB, localState.player.id, "matchesPlayed", localState.player.matchesPlayed + 1);
