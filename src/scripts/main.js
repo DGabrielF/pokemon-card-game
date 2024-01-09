@@ -149,9 +149,9 @@ export function handleContent(content) {
   if (content === "getCard") {
     getCard();    
   } else if (content === "selectCard") {
-    selectCard();  
+    selectCard();
   } else if (content === "searchDuel") {
-    searchDuel(); 
+    (state.user.hand.length != 6)?selectCard():searchDuel(); 
   } else if (content === "ranking") {
     ranking();
   } else {
