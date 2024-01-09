@@ -169,7 +169,6 @@ function createAttributeArea() {
 }
 
 function handleAttribute(div, key) {
-  console.log("handleAttribute")
   const checked = document.querySelector(".checked");
   checked.classList.remove("checked");
   div.classList.add("checked");
@@ -361,6 +360,7 @@ async function comparison(playerAttribute, enemyAttribute) { 141
       state.user.coins += playerCoins + localState.player.consecutiveVictories;
       
       await updateFieldDocument(localState.values.enemyDB, localState.enemy.id, "losses", localState.enemy.losses + 1);
+      await updateFieldDocument(localState.values.enemyDB, localState.enemy.id, "consecutiveVictories", 0);
     } else {
       await updateFieldDocument(localState.values.playerDB, localState.player.id, "losses", localState.player.losses + 1);
       await updateFieldDocument(localState.values.playerDB, localState.player.id, "consecutiveVictories", 0);
@@ -405,7 +405,6 @@ function toggleAttribute(enable) {
   const buttons = Array.from(attributeArea.children);
   buttons.forEach((button) => {
     const balloon = document.querySelector(".balloon");
-    console.log(balloon);
     if (enable) {
       attributeArea.classList.remove("unable");
       balloon.style.visibility = "visible";

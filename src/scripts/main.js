@@ -153,7 +153,7 @@ export function handleContent(content) {
   } else if (content === "searchDuel") {
     searchDuel(); 
   } else if (content === "ranking") {
-    ranking
+    ranking();
   } else {
     homePage(handleContent);
   }
