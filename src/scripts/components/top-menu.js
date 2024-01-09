@@ -32,8 +32,11 @@ function handleMenu () {
       element.disabled = (key === state.content);
       element.classList.add("menu-item");
       element.textContent = state.contents[key].span;
-      element.addEventListener("click", () => cleanMenus())
-      element.addEventListener("click", () => handleContent(key))
+      element.addEventListener("click", () => handleContent(key));
+      element.addEventListener("click", () => {
+        const menu = document.querySelector("sub-list-menu");
+        menu.remove()
+      });
       listMenu.appendChild(element);
     };
     menu.appendChild(listMenu);
@@ -88,8 +91,6 @@ function handleProfileSubMenu () {
       element.appendChild(title);  
       if (item.subItems) {
         item.subItems.forEach( (subItem) => {
-          const separator = document.createElement("div");
-          separator.classList.add("separator");
           const itemList = document.createElement("div");
           itemList.textContent = subItem.name;
           itemList.classList.add("sub-profile-subitem");
