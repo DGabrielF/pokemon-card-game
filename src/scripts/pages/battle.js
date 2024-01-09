@@ -344,6 +344,7 @@ function enemyAttributeSelector() {
 
 async function comparison(playerAttribute, enemyAttribute) { 141
   const round = document.querySelector("#round");
+  localState.values.round += 1;
   round.textContent = localState.values.round;
   
   const winner = (playerAttribute > enemyAttribute)?"player":"enemy";
@@ -389,7 +390,6 @@ async function comparison(playerAttribute, enemyAttribute) { 141
 }
 
 async function handleRound() {
-  localState.values.round += 1;
   const roundOwnerId = localState.values.round % localState.values.playingOrder.length;
   const roundOwner = localState.values.playingOrder[roundOwnerId];
   await enemyCardSelector();
